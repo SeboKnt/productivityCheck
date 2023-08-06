@@ -5,6 +5,11 @@ import os
 
 load_dotenv()
 
+global db_user
+global db_passwd
+global db_host
+global db_name
+
 mqtt_server = os.getenv("MQTT_SERVER")
 mqtt_port = int(os.getenv("MQTT_PORT")) # convert string to int
 mqtt_name = os.getenv("MQTT_NAME")
@@ -14,7 +19,6 @@ db_passwd = os.getenv("DB_PASSWD")
 db_host = os.getenv("DB_HOST")
 db_name = os.getenv("DB_NAME")
 
-
 if __name__ == "__main__":
-    prep_db(db_user, db_passwd, db_host, db_name)
-    listener(mqtt_name, mqtt_passwd, mqtt_server, mqtt_port, db_user, db_passwd, db_host, db_name)
+    #prep_db(db_user, db_passwd, db_host, db_name)
+    listener(mqtt_name, mqtt_passwd, mqtt_server, mqtt_port)

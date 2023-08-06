@@ -1,10 +1,24 @@
 import psycopg2
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+global db_user
+global db_passwd
+global db_host
+global db_name
+
+db_user = os.getenv("DB_USER")
+db_passwd = os.getenv("DB_PASSWD")
+db_host = os.getenv("DB_HOST")
+db_name = os.getenv("DB_NAME")
 
 def format_timestamp(timestamp):
     return timestamp.strftime('%Y%m%d%H%M%S')
 
-def insert_db(name, distance, db_user, db_passwd, db_host, db_name):
+def insert_db(name, distance):
     try:
         conn = psycopg2.connect(
             host=db_host,
