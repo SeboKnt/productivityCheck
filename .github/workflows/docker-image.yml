@@ -23,8 +23,6 @@ jobs:
           password: ${{ secrets.GH_PAT }}
 
       - name: Build and push
-        env:
-          DOCKER_BUILDKIT: 1
         run: |
           docker buildx create --use
           docker buildx build \
