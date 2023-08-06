@@ -6,16 +6,16 @@ def on_connect(client, userdata, flags, rc):
     print("Verbunden mit MQTT-Broker mit dem Code: " + str(rc))
     client.subscribe("espresense/rooms/schreibtisch")
 
-def on_message(client, userdata, msg):
+def on_message(client, userdata, msg, db_user, db_passwd, db_host, db_name):
     payload = msg.payload.decode("utf-8")
     data = json.loads(payload)
     if data.get("id") == "apple:watch6-4":
         name = data.get("name")
         distance = data.get("distance")
-        #insert_db(name, distance)
-        print(" Name: " + name + " Distance: " + str(distance))
+        insert_db(name, distance, db_user, db_passwd, db_host, db_name)
+        #print(" Name: " + name + " Distance: " + str(distance))
 
-def listener(name, passwd, mqtt_server, mqtt_port):
+def listener(name, passwd, mqtt_server, mqtt_port, db_user, db_passwd, db_host, db_name):
 
     client = mqtt.Client()
     client.username_pw_set(name, passwd)

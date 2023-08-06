@@ -17,4 +17,4 @@ db_name = os.getenv("DB_NAME")
 
 if __name__ == "__main__":
     prep_db(db_user, db_passwd, db_host, db_name)
-    #listener(mqtt_name, mqtt_passwd, mqtt_server, mqtt_port)
+    listener(mqtt_name, mqtt_passwd, mqtt_server, mqtt_port, db_user, db_passwd, db_host, db_name)

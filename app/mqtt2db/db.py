@@ -4,13 +4,13 @@ from datetime import datetime
 def format_timestamp(timestamp):
     return timestamp.strftime('%Y%m%d%H%M%S')
 
-def insert_db(name, distance):
+def insert_db(name, distance, db_user, db_passwd, db_host, db_name):
     try:
         conn = psycopg2.connect(
-            host="DEIN_HOST",
-            database="DEIN_DATABASE_NAME",
-            user="DEIN_BENUTZERNAME",
-            password="DEIN_PASSWORT"
+            host=db_host,
+            database=db_name,
+            user=db_user,
+            password=db_passwd
         )
         
         cur = conn.cursor()
@@ -19,8 +19,6 @@ def insert_db(name, distance):
         values = (name, distance, timestamp)
         cur.execute(sql, values)
         conn.commit()
-
-        print("Daten erfolgreich in die Datenbank eingefügt!")
 
     except (Exception, psycopg2.Error) as error:
         print("Fehler beim Einfügen der Daten in die Datenbank:", error)
