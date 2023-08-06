@@ -20,7 +20,7 @@ def listener(name, passwd, mqtt_server, mqtt_port, db_user, db_passwd, db_host, 
     client = mqtt.Client()
     client.username_pw_set(name, passwd)
     client.on_connect = on_connect
-    client.on_message = on_message
+    client.on_message = on_message(db_user, db_passwd, db_host, db_name)
 
     try:
         client.connect(mqtt_server, mqtt_port, 60)
