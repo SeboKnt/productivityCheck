@@ -1,5 +1,5 @@
 import json
-from datetime import datetime 
+from db import insert_db
 import paho.mqtt.client as mqtt
 
 def on_connect(client, userdata, flags, rc):
@@ -12,8 +12,8 @@ def on_message(client, userdata, msg):
     if data.get("id") == "apple:watch6-4":
         name = data.get("name")
         distance = data.get("distance")
-        time = datetime.now().strftime("%Y%m%d%H%M%S")
-        print(time + " Name: " + name + " Distance: " + str(distance))
+        #insert_db(name, distance)
+        print(" Name: " + name + " Distance: " + str(distance))
 
 def listener(name, passwd, mqtt_server, mqtt_port):
 

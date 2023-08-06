@@ -1,0 +1,5 @@
+# requirements.txt
+
+paho-mqtt           # Conn to MQTT
+psycopg2-binary     # PostgreSQL
+python-dotenv       # .env
