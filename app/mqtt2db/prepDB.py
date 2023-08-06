@@ -13,13 +13,13 @@ def create_table(conn, cur):
     conn.commit()
     print("Tabelle 'schreibtisch_distanz' wurde erstellt.")
 
-def prep_db():
+def prep_db(db_user, db_passwd, db_host, db_name):
     try:
         conn = psycopg2.connect(
-            host="DEIN_HOST",
-            database="DEIN_DATABASE_NAME",
-            user="DEIN_BENUTZERNAME",
-            password="DEIN_PASSWORT"
+            host=db_host,
+            database=db_name,
+            user=db_user,
+            password=db_passwd
         )
 
         cur = conn.cursor()
