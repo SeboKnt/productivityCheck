@@ -30,5 +30,4 @@ jobs:
           docker buildx build \
           --platform linux/amd64,linux/arm64 \
           --tag ghcr.io/seboknt/mqtt2db:latest \
-          --push \
           app/mqtt2db/.
