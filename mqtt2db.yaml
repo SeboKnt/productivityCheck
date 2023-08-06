@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt2db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mqtt2db
+  template:
+    metadata:
+      labels:
+        app: mqtt2db
+    spec:
+      containers:
+      - name: mqtt2db
+        image: ghcr.io/seboknt/mqtt2db:latest
+        env:
+        - name: MQTT_SERVER
+          value: "192.168.178.73"
+        - name: MQTT_PORT
+          value: 1883
+        - name: MQTT_NAME
+          value: "mqtt"
+        - name: MQTT_PASSWD
+          value: "kk"
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PASSWD
+          value: "TOn0IdQ3vRCwfxOJ7CYmOV5aMqIoJcT1Kvi0RN8NQV1V9LcpDnENhQ0VhYFfPcZG"
+        - name: DB_HOST
+          value: "10.43.90.174"
+        - name: DB_NAME
+          value: "postgres"
+      imagePullSecrets:
+      - name: github-pull-secret
