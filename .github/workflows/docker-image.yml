@@ -23,10 +23,12 @@ jobs:
           password: ${{ secrets.GH_PAT }}
 
       - name: Build and push
+        env:
+          DOCKER_BUILDKIT: 1
         run: |
           docker buildx create --use
           docker buildx build \
-          --platform linux/amd64,linux/arm64/v8 \
+          --platform linux/amd64,linux/arm64 \
           --tag ghcr.io/seboknt/mqtt2db:latest \
           --push \
           app/mqtt2db/.
