@@ -3,7 +3,8 @@ LABEL org.opencontainers.image.source https://github.com/seboknt/productivityChe
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY .env .
+#COPY .env .
 COPY *.py .
+ENV TZ=Europe/Berlin
 CMD ["python", "main.py"]
 

@@ -19,7 +19,7 @@ spec:
         - name: MQTT_SERVER
           value: "192.168.178.73"
         - name: MQTT_PORT
-          value: 1883
+          value: "1883"
         - name: MQTT_NAME
           value: "mqtt"
         - name: MQTT_PASSWD
