@@ -28,7 +28,7 @@ jobs:
         run: |
           docker buildx create --use
           docker buildx build \
-          --platform linux/amd64,linux/arm64 \
+          --platform linux/amd64,linux/arm64/v8 \
+          --tag ghcr.io/seboknt/mqtt2db:latest \
           --push \
-          -t ghcr.io/seboknt/mqtt2db:latest \
           app/mqtt2db/.
