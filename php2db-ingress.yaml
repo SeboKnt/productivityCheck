@@ -1,0 +1,18 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: php2db-ingress
+  annotations:
+
+spec:
+  rules:
+    - host: php2db.default.hideout.youngandhungry.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: php2db-service
+                port:
+                  number: 80

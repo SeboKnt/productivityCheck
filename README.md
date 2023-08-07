@@ -8,6 +8,18 @@ helm upgrade --install cnpg \
   --create-namespace \
   cnpg/cloudnative-pg
 
+
+https://cloudnative-pg.io/documentation/1.20/quickstart/
+
+helm repo add prometheus-community \
+  https://prometheus-community.github.io/helm-charts
+
+helm upgrade --install \
+  -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/kube-stack-config.yaml \
+  prometheus-community \
+  prometheus-community/kube-prometheus-stack
+
+
 kubectl get secret sql-superuser -o jsonpath="{.data.username}" | base64 -d
 kubectl get secret sql-superuser -o jsonpath="{.data.password}" | base64 -d
 kubectl get secret sql-app -o jsonpath="{.data.username}" | base64 -d

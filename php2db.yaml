@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php2db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php2db
+  template:
+    metadata:
+      labels:
+        app: php2db
+    spec:
+      containers:
+      - name: php2db
+        image: ghcr.io/seboknt/php2db:latest
+        env:
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PASSWD
+          value: "TOn0IdQ3vRCwfxOJ7CYmOV5aMqIoJcT1Kvi0RN8NQV1V9LcpDnENhQ0VhYFfPcZG"
+        - name: DB_HOST
+          value: "10.43.90.174"
+        - name: DB_NAME
+          value: "postgres"
+      imagePullSecrets:
+      - name: github-pull-secret

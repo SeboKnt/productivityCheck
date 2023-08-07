@@ -1,0 +1,18 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: prometheus-community-kube-prometheus
+  annotations:
+
+spec:
+  rules:
+    - host: prometheus.default.hideout.youngandhungry.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-community-grafana
+                port:
+                  number: 80
