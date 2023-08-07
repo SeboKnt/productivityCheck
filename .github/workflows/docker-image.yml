@@ -22,9 +22,16 @@ jobs:
           username: seboknt
           password: ${{ secrets.GH_PAT }}
 
-      - name: Build and push
+      - name: Build and push mqtt2db
         env:
           DOCKER_BUILDKIT: 1
         run: |
           docker buildx create --use
           docker buildx build --platform linux/amd64,linux/arm64 --push -t ghcr.io/seboknt/mqtt2db:latest app/mqtt2db/.
+
+      - name: Build and push php2db
+        env:
+          DOCKER_BUILDKIT: 1
+        run: |
+          docker buildx create --use
+          docker buildx build --platform linux/amd64,linux/arm64 --push -t ghcr.io/seboknt/mqtt2db:latest app/php2db/.
